@@ -375,14 +375,18 @@ function Home() {
       </section>
 
       {/* DIFERENCIAIS */}
-      <section id="diferenciais" className="py-24 max-w-7xl mx-auto px-6">
-        <div className="text-center max-w-2xl mx-auto">
-          <span className="text-xs font-bold tracking-[0.25em] text-hyundai">POR QUE A R8 PARTS</span>
-          <h2 className="font-serif text-4xl md:text-5xl font-bold mt-3">
-            Diferenciais que <span className="text-gradient-blue">fazem a diferença</span>
-          </h2>
-        </div>
-        <div className="mt-14 grid md:grid-cols-3 gap-6">
+      <section id="diferenciais" className="relative py-24 overflow-hidden">
+        <div className="absolute inset-0 bg-blue-grid opacity-40 pointer-events-none" />
+        <div className="absolute -top-20 left-1/4 size-80 rounded-full bg-sky-300/25 blur-3xl animate-float-blob pointer-events-none" />
+        <div className="absolute bottom-10 right-10 size-72 rounded-full bg-hyundai/15 blur-3xl animate-float-blob pointer-events-none" style={{ animationDelay: "5s" }} />
+        <div className="relative max-w-7xl mx-auto px-6">
+          <div className="text-center max-w-2xl mx-auto">
+            <span className="text-xs font-bold tracking-[0.25em] text-hyundai">POR QUE A R8 PARTS</span>
+            <h2 className="font-serif text-4xl md:text-5xl font-bold mt-3">
+              Diferenciais que <span className="text-gradient-blue">fazem a diferença</span>
+            </h2>
+          </div>
+          <div className="mt-14 grid md:grid-cols-3 gap-6">
           {[
             { icon: ShieldCheck, t: "Peças 100% Originais", d: "Compra direta dos fabricantes. Nota fiscal e garantia integral." },
             { icon: Truck, t: "Entrega para todo Brasil", d: "Logística otimizada. Despacho no mesmo dia para pedidos aprovados até 15h." },
