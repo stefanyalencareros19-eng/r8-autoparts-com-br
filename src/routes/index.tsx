@@ -408,6 +408,7 @@ function Home() {
               <p className="mt-2 text-muted-foreground">{d}</p>
             </motion.div>
           ))}
+          </div>
         </div>
       </section>
 
