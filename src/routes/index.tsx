@@ -8,6 +8,11 @@ import {
 import creta from "@/assets/creta-white.jpg";
 import tera from "@/assets/tera-red.jpg";
 import warehouse from "@/assets/warehouse.jpg";
+import carTucson from "@/assets/car-tucson.jpg";
+import carHb20 from "@/assets/car-hb20.jpg";
+import carNivus from "@/assets/car-nivus.jpg";
+import carTcross from "@/assets/car-tcross.jpg";
+import carPolo from "@/assets/car-polo.jpg";
 import c1 from "@/assets/c1.jpg";
 import c2 from "@/assets/c2.jpg";
 import c3 from "@/assets/c3.jpg";
