@@ -297,38 +297,70 @@ function Home() {
       </section>
 
       {/* MARCAS */}
-      <section id="marcas" className="py-24 bg-gradient-hero">
-        <div className="max-w-7xl mx-auto px-6">
+      <section id="marcas" className="relative py-24 bg-gradient-hero overflow-hidden">
+        <div className="absolute inset-0 bg-blue-grid opacity-60 pointer-events-none" />
+        <div className="absolute -top-32 -left-20 size-96 rounded-full bg-hyundai/15 blur-3xl animate-float-blob pointer-events-none" />
+        <div className="absolute -bottom-32 -right-20 size-96 rounded-full bg-sky-400/20 blur-3xl animate-float-blob pointer-events-none" style={{ animationDelay: "3s" }} />
+
+        <div className="relative max-w-7xl mx-auto px-6">
           <div className="text-center max-w-2xl mx-auto">
-            <span className="text-xs font-bold tracking-[0.25em] text-hyundai">MARCAS QUE DISTRIBUÍMOS</span>
+            <span className="text-xs font-bold tracking-[0.25em] text-hyundai">ESCOLHA A SUA MARCA</span>
             <h2 className="font-serif text-4xl md:text-5xl font-bold mt-3">
               Originais <span className="text-gradient-blue">de fábrica</span>
             </h2>
             <p className="mt-4 text-muted-foreground">
-              Linha completa de reposição para todos os modelos. Compre direto pelo WhatsApp.
+              Clique no símbolo oficial da sua marca e fale direto com nosso vendedor no WhatsApp.
             </p>
           </div>
 
           <div className="mt-14 grid md:grid-cols-2 gap-7">
             {[
-              { name: "Hyundai", Logo: HyundaiLogo, color: "hyundai",
-                desc: "HB20, Creta, Tucson, Santa Fe, ix35, Tera, i30, Azera e mais.",
-                msg: "Olá! Quero comprar peças originais Hyundai." },
-              { name: "Volkswagen", Logo: VWLogo, color: "vw",
-                desc: "Gol, Polo, Virtus, T-Cross, Nivus, Saveiro, Amarok, Jetta e mais.",
-                msg: "Olá! Quero comprar peças originais Volkswagen." },
-            ].map(({ name, Logo, color, desc, msg }) => (
+              {
+                name: "Hyundai", Logo: HyundaiLogo, color: "hyundai",
+                tagline: "Linha completa para todos os modelos",
+                models: "HB20 · Creta · Tucson · Santa Fe · ix35 · Tera · i30 · Azera",
+                parts: ["Pastilhas e discos de freio", "Filtros (óleo, ar, cabine)", "Velas e bobinas", "Correias e tensores", "Amortecedores e bandejas", "Bombas d'água e radiadores"],
+                msg: "Olá! Quero comprar peças originais Hyundai.",
+              },
+              {
+                name: "Volkswagen", Logo: VWLogo, color: "vw",
+                tagline: "Reposição completa Volkswagen",
+                models: "Gol · Polo · Virtus · T-Cross · Nivus · Saveiro · Amarok · Jetta",
+                parts: ["Kit embreagem e volante", "Pastilhas e discos", "Filtros e velas", "Suspensão completa", "Bombas e radiadores", "Elétrica e sensores"],
+                msg: "Olá! Quero comprar peças originais Volkswagen.",
+              },
+            ].map(({ name, Logo, color, tagline, models, parts, msg }) => (
               <motion.a
                 key={name} href={waLink(msg)} target="_blank" rel="noreferrer"
-                whileHover={{ y: -6 }}
-                className="group relative overflow-hidden p-10 rounded-3xl bg-white border border-border shadow-soft hover:shadow-glow transition flex flex-col"
+                whileHover={{ y: -8 }}
+                className="group relative overflow-hidden p-8 md:p-10 rounded-3xl bg-white border border-border shadow-soft hover:shadow-glow transition flex flex-col"
               >
-                <div className={`absolute -top-20 -right-20 size-64 rounded-full blur-3xl opacity-20 ${color === "hyundai" ? "bg-hyundai" : "bg-vw"}`} />
-                <div className={`size-20 rounded-2xl grid place-items-center text-white shadow-glow ${color === "hyundai" ? "bg-hyundai" : "bg-vw"}`}>
-                  <Logo className="h-10 w-10" />
+                <div className={`absolute -top-24 -right-24 size-72 rounded-full blur-3xl opacity-25 ${color === "hyundai" ? "bg-hyundai" : "bg-vw"} animate-blue-pulse`} />
+
+                {/* Big authentic logo */}
+                <div className="flex items-center gap-5">
+                  <div className={`size-24 rounded-3xl grid place-items-center bg-white border-2 ${color === "hyundai" ? "border-hyundai/30 text-hyundai" : "border-vw/30 text-vw"} shadow-glow group-hover:scale-105 transition`}>
+                    <Logo className="h-16 w-16" />
+                  </div>
+                  <div>
+                    <h3 className="font-serif text-3xl md:text-4xl font-bold leading-tight">{name}</h3>
+                    <p className="text-sm text-muted-foreground mt-1">{tagline}</p>
+                  </div>
                 </div>
-                <h3 className="mt-6 font-serif text-3xl font-bold">{name}</h3>
-                <p className="mt-2 text-muted-foreground">{desc}</p>
+
+                <p className="mt-6 text-xs font-bold tracking-widest uppercase text-hyundai">Modelos atendidos</p>
+                <p className="mt-1 text-sm text-foreground/80">{models}</p>
+
+                <p className="mt-6 text-xs font-bold tracking-widest uppercase text-hyundai">Peças disponíveis</p>
+                <ul className="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1.5 text-sm">
+                  {parts.map((p) => (
+                    <li key={p} className="flex items-start gap-2 text-foreground/80">
+                      <span className={`mt-1.5 size-1.5 rounded-full shrink-0 ${color === "hyundai" ? "bg-hyundai" : "bg-vw"}`} />
+                      {p}
+                    </li>
+                  ))}
+                </ul>
+
                 <div className={`mt-8 inline-flex items-center gap-2 font-semibold ${color === "hyundai" ? "text-hyundai" : "text-vw"}`}>
                   <WhatsappIcon className="h-5 w-5 text-whatsapp" />
                   Comprar via WhatsApp
