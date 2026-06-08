@@ -51,18 +51,29 @@ const testimonials = [
 ];
 
 function HyundaiLogo({ className = "h-6 w-6" }: { className?: string }) {
+  // Authentic Hyundai mark: italic "H" inside a tilted ellipse
   return (
-    <svg viewBox="0 0 100 60" className={className} fill="currentColor">
-      <path d="M50 6c-22 0-40 10-40 24s18 24 40 24 40-10 40-24S72 6 50 6zm0 36c-12 0-22-6-22-12s10-12 22-12 22 6 22 12-10 12-22 12zm-15-12c0-3 7-6 15-6s15 3 15 6-7 6-15 6-15-3-15-6z"/>
+    <svg viewBox="0 0 200 120" className={className} aria-label="Hyundai">
+      <g transform="rotate(-12 100 60)">
+        <ellipse cx="100" cy="60" rx="92" ry="42" fill="none" stroke="currentColor" strokeWidth="12"/>
+        <path d="M55 32 L78 32 L72 56 L128 56 L134 32 L157 32 L138 92 L115 92 L122 68 L66 68 L59 92 L36 92 Z" fill="currentColor"/>
+      </g>
     </svg>
   );
 }
 
 function VWLogo({ className = "h-6 w-6" }: { className?: string }) {
+  // Authentic Volkswagen mark: V over W inside a circle
   return (
-    <svg viewBox="0 0 60 60" className={className} fill="none" stroke="currentColor" strokeWidth="3">
-      <circle cx="30" cy="30" r="26"/>
-      <path d="M14 18 L24 42 L30 28 L36 42 L46 18 M22 18 L26 26 M38 18 L34 26" strokeLinecap="round" strokeLinejoin="round"/>
+    <svg viewBox="0 0 120 120" className={className} aria-label="Volkswagen">
+      <circle cx="60" cy="60" r="54" fill="none" stroke="currentColor" strokeWidth="6"/>
+      <circle cx="60" cy="60" r="46" fill="currentColor" opacity="0.08"/>
+      <g fill="none" stroke="currentColor" strokeWidth="6" strokeLinecap="square" strokeLinejoin="miter">
+        <path d="M30 38 L60 92 L90 38"/>
+        <path d="M44 38 L60 70 L76 38"/>
+        <path d="M20 50 L40 90 L52 64"/>
+        <path d="M100 50 L80 90 L68 64"/>
+      </g>
     </svg>
   );
 }
