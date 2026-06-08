@@ -81,45 +81,6 @@ function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       {/* NAV */}
-      <header className="sticky top-0 z-50 backdrop-blur-xl bg-background/80 border-b border-border/50">
-        <nav className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          <a href="#top" className="flex items-center gap-3">
-            <div className="size-11 rounded-xl bg-gradient-blue grid place-items-center text-white font-display font-extrabold text-lg shadow-glow">
-              R8
-            </div>
-            <div className="leading-tight">
-              <p className="font-display font-extrabold text-lg">R8 Parts</p>
-              <p className="text-[11px] tracking-[0.2em] text-hyundai font-semibold">DISTRIBUIDOR</p>
-            </div>
-          </a>
-          <ul className="hidden md:flex items-center gap-9 text-sm font-medium">
-            <li><a href="#sobre" className="hover:text-hyundai transition">Sobre</a></li>
-            <li><a href="#marcas" className="hover:text-hyundai transition">Marcas</a></li>
-            <li><a href="#diferenciais" className="hover:text-hyundai transition">Diferenciais</a></li>
-            <li><a href="#depoimentos" className="hover:text-hyundai transition">Depoimentos</a></li>
-            <li><a href="#contato" className="hover:text-hyundai transition">Contato</a></li>
-          </ul>
-          <a
-            href={waLink("Olá! Gostaria de falar com um vendedor da R8 Parts.")}
-            target="_blank" rel="noreferrer"
-            className="hidden md:inline-flex items-center gap-2 bg-gradient-blue text-white px-5 h-11 rounded-full font-semibold text-sm shadow-glow hover:scale-[1.03] transition"
-          >
-            <WhatsappIcon className="h-4 w-4" /> Falar agora
-          </a>
-          <button onClick={() => setOpen(!open)} className="md:hidden p-2">
-            {open ? <X /> : <Menu />}
-          </button>
-        </nav>
-        {open && (
-          <div className="md:hidden border-t border-border bg-background/95 px-6 py-4 flex flex-col gap-3 text-sm">
-            <a href="#sobre" onClick={() => setOpen(false)}>Sobre</a>
-            <a href="#marcas" onClick={() => setOpen(false)}>Marcas</a>
-            <a href="#diferenciais" onClick={() => setOpen(false)}>Diferenciais</a>
-            <a href="#depoimentos" onClick={() => setOpen(false)}>Depoimentos</a>
-            <a href="#contato" onClick={() => setOpen(false)}>Contato</a>
-          </div>
-        )}
-      </header>
 
       {/* HERO */}
       <section id="top" className="relative overflow-hidden bg-[#04070f] text-white">
