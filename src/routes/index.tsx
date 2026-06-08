@@ -413,8 +413,10 @@ function Home() {
       </section>
 
       {/* DEPOIMENTOS */}
-      <section id="depoimentos" className="py-24 bg-gradient-hero">
-        <div className="max-w-7xl mx-auto px-6">
+      <section id="depoimentos" className="relative py-24 bg-gradient-hero overflow-hidden">
+        <div className="absolute -top-20 -right-20 size-96 rounded-full bg-sky-400/20 blur-3xl animate-float-blob pointer-events-none" />
+        <div className="absolute -bottom-20 -left-20 size-96 rounded-full bg-hyundai/15 blur-3xl animate-float-blob pointer-events-none" style={{ animationDelay: "3s" }} />
+        <div className="relative max-w-7xl mx-auto px-6">
           <div className="text-center max-w-2xl mx-auto">
             <span className="text-xs font-bold tracking-[0.25em] text-hyundai">CLIENTES PELO BRASIL</span>
             <h2 className="font-serif text-4xl md:text-5xl font-bold mt-3">
