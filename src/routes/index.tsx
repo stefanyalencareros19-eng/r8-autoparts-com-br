@@ -259,8 +259,10 @@ function Home() {
 
 
       {/* SOBRE */}
-      <section id="sobre" className="py-24 max-w-7xl mx-auto px-6">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+      <section id="sobre" className="relative py-24 overflow-hidden">
+        <div className="absolute top-10 right-0 size-80 rounded-full bg-sky-400/20 blur-3xl animate-float-blob pointer-events-none" />
+        <div className="absolute bottom-0 left-10 size-72 rounded-full bg-hyundai/15 blur-3xl animate-float-blob pointer-events-none" style={{ animationDelay: "4s" }} />
+        <div className="relative max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
           <motion.img
             initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }} transition={{ duration: 0.6 }}
