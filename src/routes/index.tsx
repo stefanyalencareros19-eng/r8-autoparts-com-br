@@ -286,7 +286,7 @@ function Home() {
                 whileHover={{ y: -6 }}
                 className="group relative overflow-hidden p-10 rounded-3xl bg-white border border-border shadow-soft hover:shadow-glow transition flex flex-col"
               >
-                <div className={`absolute -top-20 -right-20 size-64 rounded-full blur-3xl opacity-20 bg-${color}`} />
+                <div className={`absolute -top-20 -right-20 size-64 rounded-full blur-3xl opacity-20 ${color === "hyundai" ? "bg-hyundai" : "bg-vw"}`} />
                 <div className={`size-20 rounded-2xl grid place-items-center text-white shadow-glow ${color === "hyundai" ? "bg-hyundai" : "bg-vw"}`}>
                   <Logo className="h-10 w-10" />
                 </div>
