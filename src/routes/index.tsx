@@ -51,18 +51,29 @@ const testimonials = [
 ];
 
 function HyundaiLogo({ className = "h-6 w-6" }: { className?: string }) {
+  // Authentic Hyundai mark: italic "H" inside a tilted ellipse
   return (
-    <svg viewBox="0 0 100 60" className={className} fill="currentColor">
-      <path d="M50 6c-22 0-40 10-40 24s18 24 40 24 40-10 40-24S72 6 50 6zm0 36c-12 0-22-6-22-12s10-12 22-12 22 6 22 12-10 12-22 12zm-15-12c0-3 7-6 15-6s15 3 15 6-7 6-15 6-15-3-15-6z"/>
+    <svg viewBox="0 0 200 120" className={className} aria-label="Hyundai">
+      <g transform="rotate(-12 100 60)">
+        <ellipse cx="100" cy="60" rx="92" ry="42" fill="none" stroke="currentColor" strokeWidth="12"/>
+        <path d="M55 32 L78 32 L72 56 L128 56 L134 32 L157 32 L138 92 L115 92 L122 68 L66 68 L59 92 L36 92 Z" fill="currentColor"/>
+      </g>
     </svg>
   );
 }
 
 function VWLogo({ className = "h-6 w-6" }: { className?: string }) {
+  // Authentic Volkswagen mark: V over W inside a circle
   return (
-    <svg viewBox="0 0 60 60" className={className} fill="none" stroke="currentColor" strokeWidth="3">
-      <circle cx="30" cy="30" r="26"/>
-      <path d="M14 18 L24 42 L30 28 L36 42 L46 18 M22 18 L26 26 M38 18 L34 26" strokeLinecap="round" strokeLinejoin="round"/>
+    <svg viewBox="0 0 120 120" className={className} aria-label="Volkswagen">
+      <circle cx="60" cy="60" r="54" fill="none" stroke="currentColor" strokeWidth="6"/>
+      <circle cx="60" cy="60" r="46" fill="currentColor" opacity="0.08"/>
+      <g fill="none" stroke="currentColor" strokeWidth="6" strokeLinecap="square" strokeLinejoin="miter">
+        <path d="M30 38 L60 92 L90 38"/>
+        <path d="M44 38 L60 70 L76 38"/>
+        <path d="M20 50 L40 90 L52 64"/>
+        <path d="M100 50 L80 90 L68 64"/>
+      </g>
     </svg>
   );
 }
@@ -248,8 +259,10 @@ function Home() {
 
 
       {/* SOBRE */}
-      <section id="sobre" className="py-24 max-w-7xl mx-auto px-6">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+      <section id="sobre" className="relative py-24 overflow-hidden">
+        <div className="absolute top-10 right-0 size-80 rounded-full bg-sky-400/20 blur-3xl animate-float-blob pointer-events-none" />
+        <div className="absolute bottom-0 left-10 size-72 rounded-full bg-hyundai/15 blur-3xl animate-float-blob pointer-events-none" style={{ animationDelay: "4s" }} />
+        <div className="relative max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
           <motion.img
             initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }} transition={{ duration: 0.6 }}
@@ -286,38 +299,70 @@ function Home() {
       </section>
 
       {/* MARCAS */}
-      <section id="marcas" className="py-24 bg-gradient-hero">
-        <div className="max-w-7xl mx-auto px-6">
+      <section id="marcas" className="relative py-24 bg-gradient-hero overflow-hidden">
+        <div className="absolute inset-0 bg-blue-grid opacity-60 pointer-events-none" />
+        <div className="absolute -top-32 -left-20 size-96 rounded-full bg-hyundai/15 blur-3xl animate-float-blob pointer-events-none" />
+        <div className="absolute -bottom-32 -right-20 size-96 rounded-full bg-sky-400/20 blur-3xl animate-float-blob pointer-events-none" style={{ animationDelay: "3s" }} />
+
+        <div className="relative max-w-7xl mx-auto px-6">
           <div className="text-center max-w-2xl mx-auto">
-            <span className="text-xs font-bold tracking-[0.25em] text-hyundai">MARCAS QUE DISTRIBUÍMOS</span>
+            <span className="text-xs font-bold tracking-[0.25em] text-hyundai">ESCOLHA A SUA MARCA</span>
             <h2 className="font-serif text-4xl md:text-5xl font-bold mt-3">
               Originais <span className="text-gradient-blue">de fábrica</span>
             </h2>
             <p className="mt-4 text-muted-foreground">
-              Linha completa de reposição para todos os modelos. Compre direto pelo WhatsApp.
+              Clique no símbolo oficial da sua marca e fale direto com nosso vendedor no WhatsApp.
             </p>
           </div>
 
           <div className="mt-14 grid md:grid-cols-2 gap-7">
             {[
-              { name: "Hyundai", Logo: HyundaiLogo, color: "hyundai",
-                desc: "HB20, Creta, Tucson, Santa Fe, ix35, Tera, i30, Azera e mais.",
-                msg: "Olá! Quero comprar peças originais Hyundai." },
-              { name: "Volkswagen", Logo: VWLogo, color: "vw",
-                desc: "Gol, Polo, Virtus, T-Cross, Nivus, Saveiro, Amarok, Jetta e mais.",
-                msg: "Olá! Quero comprar peças originais Volkswagen." },
-            ].map(({ name, Logo, color, desc, msg }) => (
+              {
+                name: "Hyundai", Logo: HyundaiLogo, color: "hyundai",
+                tagline: "Linha completa para todos os modelos",
+                models: "HB20 · Creta · Tucson · Santa Fe · ix35 · Tera · i30 · Azera",
+                parts: ["Pastilhas e discos de freio", "Filtros (óleo, ar, cabine)", "Velas e bobinas", "Correias e tensores", "Amortecedores e bandejas", "Bombas d'água e radiadores"],
+                msg: "Olá! Quero comprar peças originais Hyundai.",
+              },
+              {
+                name: "Volkswagen", Logo: VWLogo, color: "vw",
+                tagline: "Reposição completa Volkswagen",
+                models: "Gol · Polo · Virtus · T-Cross · Nivus · Saveiro · Amarok · Jetta",
+                parts: ["Kit embreagem e volante", "Pastilhas e discos", "Filtros e velas", "Suspensão completa", "Bombas e radiadores", "Elétrica e sensores"],
+                msg: "Olá! Quero comprar peças originais Volkswagen.",
+              },
+            ].map(({ name, Logo, color, tagline, models, parts, msg }) => (
               <motion.a
                 key={name} href={waLink(msg)} target="_blank" rel="noreferrer"
-                whileHover={{ y: -6 }}
-                className="group relative overflow-hidden p-10 rounded-3xl bg-white border border-border shadow-soft hover:shadow-glow transition flex flex-col"
+                whileHover={{ y: -8 }}
+                className="group relative overflow-hidden p-8 md:p-10 rounded-3xl bg-white border border-border shadow-soft hover:shadow-glow transition flex flex-col"
               >
-                <div className={`absolute -top-20 -right-20 size-64 rounded-full blur-3xl opacity-20 ${color === "hyundai" ? "bg-hyundai" : "bg-vw"}`} />
-                <div className={`size-20 rounded-2xl grid place-items-center text-white shadow-glow ${color === "hyundai" ? "bg-hyundai" : "bg-vw"}`}>
-                  <Logo className="h-10 w-10" />
+                <div className={`absolute -top-24 -right-24 size-72 rounded-full blur-3xl opacity-25 ${color === "hyundai" ? "bg-hyundai" : "bg-vw"} animate-blue-pulse`} />
+
+                {/* Big authentic logo */}
+                <div className="flex items-center gap-5">
+                  <div className={`size-24 rounded-3xl grid place-items-center bg-white border-2 ${color === "hyundai" ? "border-hyundai/30 text-hyundai" : "border-vw/30 text-vw"} shadow-glow group-hover:scale-105 transition`}>
+                    <Logo className="h-16 w-16" />
+                  </div>
+                  <div>
+                    <h3 className="font-serif text-3xl md:text-4xl font-bold leading-tight">{name}</h3>
+                    <p className="text-sm text-muted-foreground mt-1">{tagline}</p>
+                  </div>
                 </div>
-                <h3 className="mt-6 font-serif text-3xl font-bold">{name}</h3>
-                <p className="mt-2 text-muted-foreground">{desc}</p>
+
+                <p className="mt-6 text-xs font-bold tracking-widest uppercase text-hyundai">Modelos atendidos</p>
+                <p className="mt-1 text-sm text-foreground/80">{models}</p>
+
+                <p className="mt-6 text-xs font-bold tracking-widest uppercase text-hyundai">Peças disponíveis</p>
+                <ul className="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1.5 text-sm">
+                  {parts.map((p) => (
+                    <li key={p} className="flex items-start gap-2 text-foreground/80">
+                      <span className={`mt-1.5 size-1.5 rounded-full shrink-0 ${color === "hyundai" ? "bg-hyundai" : "bg-vw"}`} />
+                      {p}
+                    </li>
+                  ))}
+                </ul>
+
                 <div className={`mt-8 inline-flex items-center gap-2 font-semibold ${color === "hyundai" ? "text-hyundai" : "text-vw"}`}>
                   <WhatsappIcon className="h-5 w-5 text-whatsapp" />
                   Comprar via WhatsApp
@@ -330,14 +375,18 @@ function Home() {
       </section>
 
       {/* DIFERENCIAIS */}
-      <section id="diferenciais" className="py-24 max-w-7xl mx-auto px-6">
-        <div className="text-center max-w-2xl mx-auto">
-          <span className="text-xs font-bold tracking-[0.25em] text-hyundai">POR QUE A R8 PARTS</span>
-          <h2 className="font-serif text-4xl md:text-5xl font-bold mt-3">
-            Diferenciais que <span className="text-gradient-blue">fazem a diferença</span>
-          </h2>
-        </div>
-        <div className="mt-14 grid md:grid-cols-3 gap-6">
+      <section id="diferenciais" className="relative py-24 overflow-hidden">
+        <div className="absolute inset-0 bg-blue-grid opacity-40 pointer-events-none" />
+        <div className="absolute -top-20 left-1/4 size-80 rounded-full bg-sky-300/25 blur-3xl animate-float-blob pointer-events-none" />
+        <div className="absolute bottom-10 right-10 size-72 rounded-full bg-hyundai/15 blur-3xl animate-float-blob pointer-events-none" style={{ animationDelay: "5s" }} />
+        <div className="relative max-w-7xl mx-auto px-6">
+          <div className="text-center max-w-2xl mx-auto">
+            <span className="text-xs font-bold tracking-[0.25em] text-hyundai">POR QUE A R8 PARTS</span>
+            <h2 className="font-serif text-4xl md:text-5xl font-bold mt-3">
+              Diferenciais que <span className="text-gradient-blue">fazem a diferença</span>
+            </h2>
+          </div>
+          <div className="mt-14 grid md:grid-cols-3 gap-6">
           {[
             { icon: ShieldCheck, t: "Peças 100% Originais", d: "Compra direta dos fabricantes. Nota fiscal e garantia integral." },
             { icon: Truck, t: "Entrega para todo Brasil", d: "Logística otimizada. Despacho no mesmo dia para pedidos aprovados até 15h." },
@@ -359,12 +408,15 @@ function Home() {
               <p className="mt-2 text-muted-foreground">{d}</p>
             </motion.div>
           ))}
+          </div>
         </div>
       </section>
 
       {/* DEPOIMENTOS */}
-      <section id="depoimentos" className="py-24 bg-gradient-hero">
-        <div className="max-w-7xl mx-auto px-6">
+      <section id="depoimentos" className="relative py-24 bg-gradient-hero overflow-hidden">
+        <div className="absolute -top-20 -right-20 size-96 rounded-full bg-sky-400/20 blur-3xl animate-float-blob pointer-events-none" />
+        <div className="absolute -bottom-20 -left-20 size-96 rounded-full bg-hyundai/15 blur-3xl animate-float-blob pointer-events-none" style={{ animationDelay: "3s" }} />
+        <div className="relative max-w-7xl mx-auto px-6">
           <div className="text-center max-w-2xl mx-auto">
             <span className="text-xs font-bold tracking-[0.25em] text-hyundai">CLIENTES PELO BRASIL</span>
             <h2 className="font-serif text-4xl md:text-5xl font-bold mt-3">
