@@ -8,6 +8,11 @@ import {
 import creta from "@/assets/creta-white.jpg";
 import tera from "@/assets/tera-red.jpg";
 import warehouse from "@/assets/warehouse.jpg";
+import carTucson from "@/assets/car-tucson.jpg";
+import carHb20 from "@/assets/car-hb20.jpg";
+import carNivus from "@/assets/car-nivus.jpg";
+import carTcross from "@/assets/car-tcross.jpg";
+import carPolo from "@/assets/car-polo.jpg";
 import c1 from "@/assets/c1.jpg";
 import c2 from "@/assets/c2.jpg";
 import c3 from "@/assets/c3.jpg";
@@ -117,109 +122,169 @@ function Home() {
       </header>
 
       {/* HERO */}
-      <section id="top" className="relative pt-10 pb-24 bg-gradient-hero overflow-hidden">
-        <div className="absolute -top-32 -left-32 size-[500px] rounded-full bg-hyundai-light/30 blur-3xl animate-blob" />
-        <div className="absolute -bottom-32 -right-20 size-[400px] rounded-full bg-hyundai/20 blur-3xl animate-blob" style={{ animationDelay: "5s" }} />
+      <section id="top" className="relative overflow-hidden bg-[#04070f] text-white">
+        {/* Animated background lights */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(59,130,246,0.35),transparent_60%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(37,99,235,0.25),transparent_55%)]" />
+          <div className="absolute top-1/3 -left-40 h-[2px] w-[60%] bg-gradient-to-r from-transparent via-sky-400 to-transparent blur-sm animate-streak" />
+          <div className="absolute top-2/3 -left-40 h-[3px] w-[80%] bg-gradient-to-r from-transparent via-blue-300 to-transparent blur-sm animate-streak" style={{ animationDelay: "1.2s" }} />
+          <div className="absolute top-1/2 -left-40 h-[1px] w-[40%] bg-gradient-to-r from-transparent via-white to-transparent animate-streak" style={{ animationDelay: "2.4s" }} />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_0%,transparent_70%,#04070f_100%)]" />
+        </div>
 
-        <div className="relative max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-12 gap-10 items-center">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}
-              className="lg:col-span-6"
-            >
-              <div className="inline-flex items-center gap-2 bg-white/70 backdrop-blur px-4 py-2 rounded-full border border-hyundai/15 text-xs font-semibold text-hyundai tracking-wider mb-6">
-                <span className="size-2 rounded-full bg-hyundai animate-pulse" />
-                15+ ANOS DISTRIBUINDO EM TODO O BRASIL
+        {/* Confidence phrases marquee — TOP */}
+        <div className="relative border-y border-white/10 bg-gradient-to-r from-hyundai/40 via-blue-600/30 to-hyundai/40 backdrop-blur py-3 overflow-hidden">
+          <div className="flex whitespace-nowrap animate-marquee-fast gap-12 text-sm md:text-base font-display font-bold uppercase tracking-[0.25em] text-white/95">
+            {Array.from({ length: 2 }).map((_, k) => (
+              <div key={k} className="flex gap-12 shrink-0">
+                {[
+                  "★ Peças 100% Originais",
+                  "● Garantia de Fábrica",
+                  "⚡ Entrega para todo Brasil",
+                  "✓ Procedência Comprovada",
+                  "★ +15 Anos de Mercado",
+                  "● Distribuidor Oficial",
+                  "⚡ Despacho no mesmo dia",
+                  "✓ Atendimento Premium",
+                ].map((t, i) => (
+                  <span key={i} className="inline-flex items-center gap-3">
+                    <span className="text-sky-300">{t}</span>
+                  </span>
+                ))}
               </div>
-              <h1 className="font-serif font-black text-5xl md:text-7xl leading-[1.02] text-foreground">
-                Peças <span className="text-gradient-blue">Originais</span><br />
-                <span className="text-hyundai">Hyundai</span> & Volkswagen
-              </h1>
-              <p className="mt-6 text-lg text-muted-foreground max-w-xl leading-relaxed">
-                Distribuidora automotiva de referência. Entregamos para todo o Brasil com agilidade,
-                procedência comprovada e atendimento consultivo direto no WhatsApp.
-              </p>
+            ))}
+          </div>
+        </div>
 
-              {/* CTA BUTTONS */}
-              <div className="mt-9 flex flex-col sm:flex-row gap-3">
-                <a
-                  href={waLink("Olá! Quero comprar peças originais Hyundai.")}
-                  target="_blank" rel="noreferrer"
-                  className="group flex items-center justify-center gap-3 bg-hyundai text-white px-6 h-14 rounded-2xl font-semibold shadow-glow hover:shadow-[0_30px_60px_-15px_rgba(0,44,95,0.5)] transition-all hover:-translate-y-0.5"
-                >
-                  <HyundaiLogo className="h-7 w-7" />
-                  <span>Comprar Hyundai</span>
-                  <ChevronRight className="h-4 w-4 transition group-hover:translate-x-1" />
-                </a>
-                <a
-                  href={waLink("Olá! Quero comprar peças originais Volkswagen.")}
-                  target="_blank" rel="noreferrer"
-                  className="group flex items-center justify-center gap-3 bg-vw text-white px-6 h-14 rounded-2xl font-semibold shadow-glow hover:shadow-[0_30px_60px_-15px_rgba(0,44,95,0.5)] transition-all hover:-translate-y-0.5"
-                >
-                  <VWLogo className="h-7 w-7" />
-                  <span>Comprar Volkswagen</span>
-                  <ChevronRight className="h-4 w-4 transition group-hover:translate-x-1" />
-                </a>
-              </div>
-              <a
-                href={waLink("Olá! Quero falar com um vendedor da R8 Parts.")}
-                target="_blank" rel="noreferrer"
-                className="mt-3 inline-flex items-center gap-2 text-whatsapp font-semibold hover:underline"
-              >
-                <WhatsappIcon className="h-5 w-5" /> Falar com um vendedor agora
-              </a>
-
-              <div className="mt-10 flex items-center gap-7 text-sm text-muted-foreground">
-                <div><b className="text-2xl font-display text-hyundai">15+</b><br />Anos no mercado</div>
-                <div className="h-10 w-px bg-border" />
-                <div><b className="text-2xl font-display text-hyundai">10k+</b><br />Clientes atendidos</div>
-                <div className="h-10 w-px bg-border" />
-                <div><b className="text-2xl font-display text-hyundai">100%</b><br />Originais</div>
-              </div>
-            </motion.div>
-
-            {/* Hero cars animation */}
-            <div className="lg:col-span-6 relative h-[440px] md:h-[520px]">
-              <motion.div
-                initial={{ opacity: 0, x: 80, rotate: -2 }}
-                animate={{ opacity: 1, x: 0, rotate: 0 }}
-                transition={{ duration: 0.9, delay: 0.2 }}
-                className="absolute top-0 right-0 w-[88%] rounded-3xl overflow-hidden shadow-glow border-4 border-white"
-              >
-                <img src={creta} alt="Hyundai Creta 2026 branco" className="w-full h-auto" width={1600} height={900} />
-                <div className="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1.5 rounded-full text-xs font-bold text-hyundai">
-                  HYUNDAI CRETA 2026
-                </div>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, x: -80, y: 40 }}
-                animate={{ opacity: 1, x: 0, y: 0 }}
-                transition={{ duration: 0.9, delay: 0.5 }}
-                className="absolute bottom-0 left-0 w-[72%] rounded-3xl overflow-hidden shadow-glow border-4 border-white"
-              >
-                <img src={tera} alt="Hyundai Tera 2026 vermelho" className="w-full h-auto" width={1600} height={900} loading="lazy" />
-                <div className="absolute top-4 left-4 bg-hyundai text-white px-3 py-1.5 rounded-full text-xs font-bold">
-                  HYUNDAI TERA 2026
-                </div>
-              </motion.div>
-              <motion.div
-                animate={{ y: [0, -15, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -bottom-4 right-8 bg-white shadow-glow rounded-2xl px-5 py-3 flex items-center gap-3 border border-border"
-              >
-                <div className="size-10 rounded-xl bg-whatsapp/10 grid place-items-center text-whatsapp">
-                  <Truck className="h-5 w-5" />
-                </div>
-                <div className="text-xs">
-                  <p className="font-bold">Entrega expressa</p>
-                  <p className="text-muted-foreground">Brasil inteiro</p>
-                </div>
-              </motion.div>
+        {/* HERO Content */}
+        <div className="relative max-w-7xl mx-auto px-6 pt-16 pb-10 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+          >
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur px-4 py-2 rounded-full border border-sky-400/30 text-xs font-semibold text-sky-300 tracking-wider mb-6">
+              <span className="size-2 rounded-full bg-sky-400 animate-pulse" />
+              R8 PARTS DISTRIBUIDOR — 15+ ANOS NO BRASIL
             </div>
+            <h1 className="font-serif font-black text-5xl md:text-7xl lg:text-8xl leading-[1.02]">
+              <span className="block text-white">Movemos quem</span>
+              <span className="block bg-gradient-to-r from-sky-300 via-blue-400 to-sky-200 bg-clip-text text-transparent drop-shadow-[0_0_40px_rgba(59,130,246,0.5)]">
+                não pode parar.
+              </span>
+            </h1>
+            <p className="mt-6 text-lg md:text-xl text-white/75 max-w-2xl mx-auto leading-relaxed">
+              Peças originais <b className="text-sky-300">Hyundai</b> e <b className="text-white">Volkswagen</b> com a velocidade,
+              confiança e procedência que o Brasil exige.
+            </p>
+
+            <div className="mt-9 flex flex-col sm:flex-row gap-3 justify-center">
+              <a
+                href={waLink("Olá! Quero comprar peças originais Hyundai.")}
+                target="_blank" rel="noreferrer"
+                className="group flex items-center justify-center gap-3 bg-gradient-to-r from-sky-500 to-blue-600 text-white px-7 h-14 rounded-2xl font-semibold shadow-[0_20px_60px_-15px_rgba(59,130,246,0.8)] hover:scale-[1.03] transition"
+              >
+                <HyundaiLogo className="h-7 w-7" />
+                <span>Comprar Hyundai</span>
+                <ChevronRight className="h-4 w-4 transition group-hover:translate-x-1" />
+              </a>
+              <a
+                href={waLink("Olá! Quero comprar peças originais Volkswagen.")}
+                target="_blank" rel="noreferrer"
+                className="group flex items-center justify-center gap-3 bg-white/10 border border-white/25 backdrop-blur text-white px-7 h-14 rounded-2xl font-semibold hover:bg-white/15 transition"
+              >
+                <VWLogo className="h-7 w-7" />
+                <span>Comprar Volkswagen</span>
+                <ChevronRight className="h-4 w-4 transition group-hover:translate-x-1" />
+              </a>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* CARS MARQUEE — main visual */}
+        <div className="relative pb-6 overflow-hidden">
+          {/* edge fades */}
+          <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-32 z-10 bg-gradient-to-r from-[#04070f] to-transparent" />
+          <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-32 z-10 bg-gradient-to-l from-[#04070f] to-transparent" />
+
+          <div className="flex gap-6 animate-marquee w-max">
+            {Array.from({ length: 2 }).map((_, k) => (
+              <div key={k} className="flex gap-6 shrink-0">
+                {[
+                  { img: carTucson, name: "Hyundai Tucson 2026", brand: "HYUNDAI", accent: "from-sky-400 to-blue-600" },
+                  { img: carNivus, name: "Volkswagen Nivus 2026", brand: "VOLKSWAGEN", accent: "from-blue-500 to-indigo-600" },
+                  { img: carHb20, name: "Hyundai HB20 2026", brand: "HYUNDAI", accent: "from-sky-400 to-blue-600" },
+                  { img: carTcross, name: "Volkswagen T-Cross 2026", brand: "VOLKSWAGEN", accent: "from-blue-500 to-indigo-600" },
+                  { img: carPolo, name: "Volkswagen Polo GTS 2026", brand: "VOLKSWAGEN", accent: "from-blue-500 to-indigo-600" },
+                ].map((car, i) => (
+                  <div
+                    key={`${k}-${i}`}
+                    className="relative w-[340px] md:w-[460px] aspect-[16/9] rounded-3xl overflow-hidden shrink-0 border border-white/10 shadow-[0_30px_80px_-20px_rgba(59,130,246,0.45)] group"
+                  >
+                    <img
+                      src={car.img}
+                      alt={car.name}
+                      width={1280} height={720}
+                      loading={k === 0 && i === 0 ? "eager" : "lazy"}
+                      className="w-full h-full object-cover"
+                    />
+                    {/* headlight flare */}
+                    <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_75%_55%,rgba(186,230,253,0.45),transparent_45%)] animate-flare" />
+                    {/* gradient bottom */}
+                    <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
+                    {/* badge */}
+                    <div className={`absolute top-4 left-4 px-3 py-1.5 rounded-full text-[10px] font-bold tracking-[0.2em] text-white bg-gradient-to-r ${car.accent} shadow-lg`}>
+                      {car.brand}
+                    </div>
+                    <div className="absolute bottom-4 left-5 right-5 flex items-end justify-between">
+                      <p className="font-display font-bold text-white text-lg md:text-xl drop-shadow-lg">{car.name}</p>
+                      <span className="text-[10px] font-bold tracking-widest text-sky-300 bg-white/10 backdrop-blur px-2 py-1 rounded">2026</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Stats strip */}
+        <div className="relative max-w-7xl mx-auto px-6 pb-16 pt-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+            {[
+              { n: "15+", t: "Anos no mercado" },
+              { n: "10k+", t: "Clientes atendidos" },
+              { n: "100%", t: "Peças originais" },
+              { n: "24h", t: "Despacho rápido" },
+            ].map((s) => (
+              <div key={s.t} className="rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur p-5 text-center">
+                <p className="font-display text-3xl md:text-4xl font-extrabold bg-gradient-to-r from-sky-300 to-blue-500 bg-clip-text text-transparent">{s.n}</p>
+                <p className="text-xs md:text-sm text-white/70 mt-1">{s.t}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Bottom phrases marquee — REVERSE */}
+        <div className="relative border-t border-white/10 bg-white/[0.03] backdrop-blur py-3 overflow-hidden">
+          <div className="flex whitespace-nowrap animate-marquee-reverse gap-12 text-sm font-display font-semibold uppercase tracking-[0.3em] text-white/70">
+            {Array.from({ length: 2 }).map((_, k) => (
+              <div key={k} className="flex gap-12 shrink-0">
+                {[
+                  "Confiança que move o Brasil",
+                  "Originalidade é compromisso",
+                  "Hyundai • Volkswagen",
+                  "Atendimento que entrega",
+                  "Logística sem fronteiras",
+                  "Tecnologia • Procedência • Velocidade",
+                ].map((t, i) => (
+                  <span key={i} className="text-sky-200/80">— {t}</span>
+                ))}
+              </div>
+            ))}
           </div>
         </div>
       </section>
+
 
       {/* SOBRE */}
       <section id="sobre" className="py-24 max-w-7xl mx-auto px-6">
