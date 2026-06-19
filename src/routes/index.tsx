@@ -28,13 +28,13 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "R8 Parts Distribuidor — Peças Originais Hyundai e Volkswagen" },
-      { name: "description", content: "Distribuidora automotiva há mais de 15 anos. Peças originais Hyundai e VW para todo o Brasil. Fale no WhatsApp (38) 98415-7199." },
+      { name: "description", content: "Distribuidora automotiva há mais de 15 anos. Peças originais Hyundai e VW para todo o Brasil. Fale no WhatsApp (11) 95244-0738." },
     ],
   }),
   component: Home,
 });
 
-const WHATSAPP_NUM = "5538984157199";
+const WHATSAPP_NUM = "5511952440738";
 const waLink = (msg: string) => `https://wa.me/${WHATSAPP_NUM}?text=${encodeURIComponent(msg)}`;
 
 const testimonials = [
@@ -478,7 +478,7 @@ function Home() {
 
             <div className="space-y-4 text-sm">
               {[
-                { icon: Phone, t: "Telefone / WhatsApp", d: "(38) 98415-7199" },
+                { icon: Phone, t: "Telefone / WhatsApp", d: "(11) 95244-0738" },
                 { icon: Mail, t: "E-mail", d: "autopartssuporte0@gmail.com" },
                 { icon: MapPin, t: "Endereço", d: "R. Antônio Fonseca, 417 — Vila Maria Baixa, São Paulo - SP, 02112-010" },
                 { icon: ShieldCheck, t: "CNPJ", d: "76.523.554/0003-05" },
