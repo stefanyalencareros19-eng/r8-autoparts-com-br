@@ -157,7 +157,7 @@ function Home() {
                 className="group flex items-center justify-center gap-3 bg-gradient-to-r from-sky-500 to-blue-600 text-white px-7 h-14 rounded-2xl font-semibold shadow-[0_20px_60px_-15px_rgba(59,130,246,0.8)] hover:scale-[1.03] transition"
               >
                 <HyundaiLogo className="h-7 w-7" />
-                <span>Comprar Hyundai</span>
+                <span>Comprar peças Hyundai</span>
                 <ChevronRight className="h-4 w-4 transition group-hover:translate-x-1" />
               </a>
               <a
@@ -166,7 +166,7 @@ function Home() {
                 className="group flex items-center justify-center gap-3 bg-white/10 border border-white/25 backdrop-blur text-white px-7 h-14 rounded-2xl font-semibold hover:bg-white/15 transition"
               >
                 <VWLogo className="h-7 w-7" />
-                <span>Comprar Volkswagen</span>
+                <span>Comprar peças Volkswagen</span>
                 <ChevronRight className="h-4 w-4 transition group-hover:translate-x-1" />
               </a>
             </div>
@@ -509,16 +509,6 @@ function Home() {
         </div>
       </footer>
 
-      {/* Floating WhatsApp */}
-      <motion.a
-        href={waLink("Olá! Quero falar com a R8 Parts.")} target="_blank" rel="noreferrer"
-        initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 1, type: "spring" }}
-        className="fixed bottom-6 right-6 z-50 size-16 rounded-full bg-whatsapp text-white grid place-items-center shadow-glow hover:scale-110 transition"
-        aria-label="WhatsApp"
-      >
-        <WhatsappIcon className="h-7 w-7" />
-        <span className="absolute inset-0 rounded-full bg-whatsapp animate-ping opacity-30" />
-      </motion.a>
     </div>
   );
 }
