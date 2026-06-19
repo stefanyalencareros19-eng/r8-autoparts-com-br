@@ -157,7 +157,7 @@ function Home() {
                 className="group flex items-center justify-center gap-3 bg-gradient-to-r from-sky-500 to-blue-600 text-white px-7 h-14 rounded-2xl font-semibold shadow-[0_20px_60px_-15px_rgba(59,130,246,0.8)] hover:scale-[1.03] transition"
               >
                 <HyundaiLogo className="h-7 w-7" />
-                <span>Comprar Hyundai</span>
+                <span>Comprar peças Hyundai</span>
                 <ChevronRight className="h-4 w-4 transition group-hover:translate-x-1" />
               </a>
               <a
