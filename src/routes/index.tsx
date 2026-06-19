@@ -166,7 +166,7 @@ function Home() {
                 className="group flex items-center justify-center gap-3 bg-white/10 border border-white/25 backdrop-blur text-white px-7 h-14 rounded-2xl font-semibold hover:bg-white/15 transition"
               >
                 <VWLogo className="h-7 w-7" />
-                <span>Comprar Volkswagen</span>
+                <span>Comprar peças Volkswagen</span>
                 <ChevronRight className="h-4 w-4 transition group-hover:translate-x-1" />
               </a>
             </div>
