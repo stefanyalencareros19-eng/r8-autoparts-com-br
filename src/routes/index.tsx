@@ -509,16 +509,6 @@ function Home() {
         </div>
       </footer>
 
-      {/* Floating WhatsApp */}
-      <motion.a
-        href={waLink("Olá! Quero falar com a R8 Parts.")} target="_blank" rel="noreferrer"
-        initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 1, type: "spring" }}
-        className="fixed bottom-6 right-6 z-50 size-16 rounded-full bg-whatsapp text-white grid place-items-center shadow-glow hover:scale-110 transition"
-        aria-label="WhatsApp"
-      >
-        <WhatsappIcon className="h-7 w-7" />
-        <span className="absolute inset-0 rounded-full bg-whatsapp animate-ping opacity-30" />
-      </motion.a>
     </div>
   );
 }
