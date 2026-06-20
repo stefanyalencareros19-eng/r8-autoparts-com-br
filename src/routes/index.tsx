@@ -36,6 +36,10 @@ export const Route = createFileRoute("/")({
 
 const WHATSAPP_NUM = "5511952440738";
 const waLink = (msg: string) => `https://wa.me/${WHATSAPP_NUM}?text=${encodeURIComponent(msg)}`;
+const trackConversion = () => {
+  const w = typeof window !== "undefined" ? (window as unknown as { gtag_report_conversion?: () => boolean }) : undefined;
+  w?.gtag_report_conversion?.();
+};
 
 const testimonials = [
   { name: "Carlos Mendes", city: "São Paulo - SP", img: c1, text: "Comprei pastilhas e filtros para meu Creta. Entrega rápida e peças 100% originais. Recomendo demais!" },
