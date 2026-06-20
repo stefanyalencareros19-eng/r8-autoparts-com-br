@@ -36,6 +36,10 @@ export const Route = createFileRoute("/")({
 
 const WHATSAPP_NUM = "5511952440738";
 const waLink = (msg: string) => `https://wa.me/${WHATSAPP_NUM}?text=${encodeURIComponent(msg)}`;
+const trackConversion = () => {
+  const w = typeof window !== "undefined" ? (window as unknown as { gtag_report_conversion?: () => boolean }) : undefined;
+  w?.gtag_report_conversion?.();
+};
 
 const testimonials = [
   { name: "Carlos Mendes", city: "São Paulo - SP", img: c1, text: "Comprei pastilhas e filtros para meu Creta. Entrega rápida e peças 100% originais. Recomendo demais!" },
@@ -153,7 +157,7 @@ function Home() {
             <div className="mt-9 flex flex-col sm:flex-row gap-3 justify-center">
               <a
                 href={waLink("Olá! Quero comprar peças originais Hyundai.")}
-                target="_blank" rel="noreferrer"
+                target="_blank" rel="noreferrer" onClick={trackConversion}
                 className="group flex items-center justify-center gap-3 bg-gradient-to-r from-sky-500 to-blue-600 text-white px-7 h-14 rounded-2xl font-semibold shadow-[0_20px_60px_-15px_rgba(59,130,246,0.8)] hover:scale-[1.03] transition"
               >
                 <HyundaiLogo className="h-7 w-7" />
@@ -162,7 +166,7 @@ function Home() {
               </a>
               <a
                 href={waLink("Olá! Quero comprar peças originais Volkswagen.")}
-                target="_blank" rel="noreferrer"
+                target="_blank" rel="noreferrer" onClick={trackConversion}
                 className="group flex items-center justify-center gap-3 bg-white/10 border border-white/25 backdrop-blur text-white px-7 h-14 rounded-2xl font-semibold hover:bg-white/15 transition"
               >
                 <VWLogo className="h-7 w-7" />
@@ -333,7 +337,7 @@ function Home() {
               },
             ].map(({ name, Logo, color, tagline, models, parts, msg }) => (
               <motion.a
-                key={name} href={waLink(msg)} target="_blank" rel="noreferrer"
+                key={name} href={waLink(msg)} target="_blank" rel="noreferrer" onClick={trackConversion}
                 whileHover={{ y: -8 }}
                 className="group relative overflow-hidden p-8 md:p-10 rounded-3xl bg-white border border-border shadow-soft hover:shadow-glow transition flex flex-col"
               >
@@ -465,7 +469,7 @@ function Home() {
                 Atendimento rápido e consultivo. Envie sua lista, receba cotação na hora e despachamos para todo Brasil.
               </p>
               <div className="mt-8 flex flex-col sm:flex-row gap-3">
-                <a href={waLink("Olá! Quero falar com um vendedor da R8 Parts.")} target="_blank" rel="noreferrer"
+                <a href={waLink("Olá! Quero falar com um vendedor da R8 Parts.")} target="_blank" rel="noreferrer" onClick={trackConversion}
                   className="inline-flex items-center justify-center gap-2 bg-whatsapp text-white px-6 h-14 rounded-2xl font-semibold hover:scale-[1.03] transition">
                   <WhatsappIcon className="h-5 w-5" /> Falar com vendedor
                 </a>
