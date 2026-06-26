@@ -36,9 +36,16 @@ export const Route = createFileRoute("/")({
 
 const WHATSAPP_NUM = "5511952440738";
 const waLink = (msg: string) => `https://wa.me/${WHATSAPP_NUM}?text=${encodeURIComponent(msg)}`;
-const trackConversion = () => {
+const trackConversion = (e?: React.MouseEvent<HTMLAnchorElement>) => {
   const w = typeof window !== "undefined" ? (window as unknown as { gtag_report_conversion?: () => boolean }) : undefined;
-  w?.gtag_report_conversion?.();
+  try { w?.gtag_report_conversion?.(); } catch {}
+  // Fallback: garante abertura mesmo em iframes/preview que bloqueiam target="_blank"
+  const href = e?.currentTarget?.getAttribute("href");
+  if (href && typeof window !== "undefined") {
+    e?.preventDefault();
+    const win = window.open(href, "_blank", "noopener,noreferrer");
+    if (!win) window.location.href = href;
+  }
 };
 
 const testimonials = [
