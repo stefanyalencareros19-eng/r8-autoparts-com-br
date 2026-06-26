@@ -35,16 +35,26 @@ export const Route = createFileRoute("/")({
 });
 
 const WHATSAPP_NUM = "5511952440738";
-const waLink = (msg: string) => `https://wa.me/${WHATSAPP_NUM}?text=${encodeURIComponent(msg)}`;
+const waLink = (msg: string) => `https://api.whatsapp.com/send?phone=${WHATSAPP_NUM}&text=${encodeURIComponent(msg)}`;
 const trackConversion = (e?: React.MouseEvent<HTMLAnchorElement>) => {
-  const w = typeof window !== "undefined" ? (window as unknown as { gtag_report_conversion?: () => boolean }) : undefined;
-  try { w?.gtag_report_conversion?.(); } catch {}
-  // Fallback: garante abertura mesmo em iframes/preview que bloqueiam target="_blank"
-  const href = e?.currentTarget?.getAttribute("href");
+  const w = typeof window !== "undefined" ? (window as unknown as { gtag_report_conversion?: (url?: string) => boolean }) : undefined;
+  const href = e?.currentTarget?.href;
   if (href && typeof window !== "undefined") {
     e?.preventDefault();
-    const win = window.open(href, "_blank", "noopener,noreferrer");
-    if (!win) window.location.href = href;
+
+    const openWhatsApp = () => {
+      window.location.href = href;
+    };
+
+    try {
+      if (w?.gtag_report_conversion) {
+        w.gtag_report_conversion(href);
+        window.setTimeout(openWhatsApp, 900);
+        return;
+      }
+    } catch {}
+
+    openWhatsApp();
   }
 };
 
