@@ -132,8 +132,8 @@ function Home() {
           <div className="absolute top-1/2 -left-40 h-[1px] w-[40%] bg-gradient-to-r from-transparent via-white to-transparent animate-streak" style={{ animationDelay: "2.4s" }} />
           <div className="absolute top-[38%] -left-40 h-[2px] w-[70%] bg-gradient-to-r from-transparent via-cyan-300 to-transparent blur-sm animate-streak" style={{ animationDelay: "3.6s" }} />
 
-          {/* Brand logos carousel drifting in the background */}
-          <div className="absolute inset-y-0 left-0 right-0 flex items-center opacity-[0.07] pointer-events-none">
+          {/* Brand logos carousel drifting behind the headline and paragraph */}
+          <div className="absolute top-[15%] left-0 right-0 h-[45%] flex items-center opacity-[0.09] pointer-events-none">
             <div className="flex gap-24 animate-marquee w-max text-white">
               {Array.from({ length: 3 }).map((_, k) => (
                 <div key={k} className="flex gap-24 shrink-0 items-center">
