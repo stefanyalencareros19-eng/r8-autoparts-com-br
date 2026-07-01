@@ -117,12 +117,40 @@ function Home() {
       {/* HERO */}
       <section id="top" className="relative overflow-hidden bg-[#04070f] text-white">
         {/* Animated background lights */}
-        <div className="absolute inset-0">
+        <div className="absolute inset-0 overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(59,130,246,0.35),transparent_60%)]" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(37,99,235,0.25),transparent_55%)]" />
-          <div className="absolute top-1/3 -left-40 h-[2px] w-[60%] bg-gradient-to-r from-transparent via-sky-400 to-transparent blur-sm animate-streak" />
+
+          {/* Pulsing blue glow orbs */}
+          <div className="absolute -top-20 -left-20 h-[420px] w-[420px] rounded-full bg-sky-500/20 blur-3xl animate-pulse" />
+          <div className="absolute top-1/2 -right-32 h-[480px] w-[480px] rounded-full bg-blue-600/20 blur-3xl animate-pulse" style={{ animationDelay: "1.5s" }} />
+          <div className="absolute bottom-0 left-1/3 h-[360px] w-[360px] rounded-full bg-indigo-500/15 blur-3xl animate-pulse" style={{ animationDelay: "3s" }} />
+
+          {/* Light streaks */}
+          <div className="absolute top-1/4 -left-40 h-[2px] w-[60%] bg-gradient-to-r from-transparent via-sky-400 to-transparent blur-sm animate-streak" />
           <div className="absolute top-2/3 -left-40 h-[3px] w-[80%] bg-gradient-to-r from-transparent via-blue-300 to-transparent blur-sm animate-streak" style={{ animationDelay: "1.2s" }} />
           <div className="absolute top-1/2 -left-40 h-[1px] w-[40%] bg-gradient-to-r from-transparent via-white to-transparent animate-streak" style={{ animationDelay: "2.4s" }} />
+          <div className="absolute top-[38%] -left-40 h-[2px] w-[70%] bg-gradient-to-r from-transparent via-cyan-300 to-transparent blur-sm animate-streak" style={{ animationDelay: "3.6s" }} />
+
+          {/* Brand logos carousel drifting in the background */}
+          <div className="absolute inset-y-0 left-0 right-0 flex items-center opacity-[0.07] pointer-events-none">
+            <div className="flex gap-24 animate-marquee w-max text-white">
+              {Array.from({ length: 3 }).map((_, k) => (
+                <div key={k} className="flex gap-24 shrink-0 items-center">
+                  {Array.from({ length: 6 }).map((__, i) => (
+                    <div key={`${k}-${i}`} className="flex gap-24 items-center shrink-0">
+                      <HyundaiLogo className="h-40 w-40 md:h-56 md:w-56 shrink-0" />
+                      <VWLogo className="h-40 w-40 md:h-56 md:w-56 shrink-0" />
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Subtle grid overlay */}
+          <div className="absolute inset-0 opacity-[0.08] bg-[linear-gradient(rgba(125,211,252,0.6)_1px,transparent_1px),linear-gradient(90deg,rgba(125,211,252,0.6)_1px,transparent_1px)] bg-[size:60px_60px]" />
+
           <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_0%,transparent_70%,#04070f_100%)]" />
         </div>
 
